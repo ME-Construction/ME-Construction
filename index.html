@@ -2,12 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ME Construction - Revêtement Extérieur</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
       font-family: 'Poppins', sans-serif;
@@ -16,23 +18,31 @@
       overflow-x: hidden;
     }
     header {
-      background: url('img/back.jpg') no-repeat center 60%;
-      background-size: cover;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
       text-align: center;
-      padding: 60px 20px 80px 20px;
-      color: white;
+      padding: 80px 20px;
+      animation: fadeIn 2s ease-in-out;
       position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 60px; /* un peu vers le bas */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 600px;
+      height: 250px;
+      background: url('img/back.jpg') no-repeat center center/cover;
+      opacity: 0.2;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 20px;
     }
     header h1, header p {
-      background-color: rgba(0, 0, 0, 0.55);
-      padding: 12px 25px;
-      border-radius: 8px;
-      max-width: 90vw;
+      position: relative;
+      z-index: 1;
     }
     nav {
       display: flex;
@@ -55,13 +65,9 @@
       color: #1abc9c;
     }
     .section {
-      padding: 60px 20px 80px;
+      padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
-      margin-top: 20px;
-    }
-    #services {
-      margin-top: 40px; /* pour être sûr que ce ne soit pas caché */
     }
     .services, .gallery {
       display: grid;
@@ -73,6 +79,7 @@
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 0.6s ease, transform 0.6s ease;
+      border-radius: 12px;
     }
     .visible {
       opacity: 1 !important;
@@ -88,6 +95,8 @@
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      object-fit: cover;
+      height: 200px;
     }
     footer {
       background: #111831;
@@ -103,7 +112,7 @@
     }
     .avis-marquee {
       display: flex;
-      animation: scrollAvis 22s linear infinite;
+      animation: scrollAvis 20s linear infinite;
       gap: 40px;
       padding: 20px;
     }
@@ -118,6 +127,8 @@
       width: 100%;
       border-radius: 8px;
       margin-bottom: 10px;
+      object-fit: cover;
+      height: 150px;
     }
     .stars {
       color: gold;
@@ -126,6 +137,10 @@
     @keyframes scrollAvis {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 600px) {
       nav {
@@ -176,9 +191,9 @@
   <section class="section" id="realisations">
     <h2>Réalisations</h2>
     <div class="gallery">
-      <img src="img/photo1.jpg" alt="Projet 1" />
-      <img src="img/photo2.jpg" alt="Projet 2" />
-      <img src="img/photo3.jpg" alt="Projet 3" />
+      <img src="img/bois.jpg" alt="Terrasse en bois" />
+      <img src="img/house.jpg" alt="Maison avec revêtement extérieur" />
+      <img src="img/terasse.jpg" alt="Terrasse carrelée" />
     </div>
   </section>
 
@@ -186,19 +201,19 @@
     <h2>Avis Clients</h2>
     <div class="avis-marquee">
       <div class="avis-item">
-        <img src="img/clientAlex.webp" alt="Alex" />
+        <img src="img/clientAlex.webp" alt="Alex">
         <p>Travail précis et de qualité, ponctuel, à l'écoute, prix compétitif. Je suis très très satisfait du travail réalisé. Contactez-les les yeux fermés !</p>
         <div class="stars">★★★★★</div>
         <small>- Alex</small>
       </div>
       <div class="avis-item">
-        <img src="img/clientFlorian.webp" alt="Florian Moine" />
+        <img src="img/clientFlorian.webp" alt="Florian Moine">
         <p>Projet d’une terrasse en dalles carrelage de 42m². Me Construction a été à l’écoute de notre projet, nous a conseillé sur les matériaux, et a réalisé une prestation parfaite dans un temps record ! Nous sommes ravis du résultat. Merci !</p>
         <div class="stars">★★★★★</div>
         <small>- Florian Moine</small>
       </div>
       <div class="avis-item">
-        <img src="img/clientAlexandre.webp" alt="Alexandre Oliveira" />
+        <img src="img/clientAlexandre.webp" alt="Alexandre Oliveira">
         <p>Réalisation de notre terrasse de 120m², pose de dalles sur plots. Artisan minutieux, à l'écoute et très professionnel. Nous recommandons ME Construction sans hésitation.</p>
         <div class="stars">★★★★★</div>
         <small>- Alexandre Oliveira</small>
@@ -214,7 +229,7 @@
     <p><strong>Email :</strong> <a href="mailto:contact@meconstruction.fr" style="color:#1abc9c; text-decoration:none;">contact@meconstruction.fr</a></p>
     <p style="text-align: center;">
       <a href="https://www.facebook.com/people/Me-construction/100066785978290/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook ME Construction" style="width: 60px; height: auto;" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook ME Construction" style="width: 60px; height: auto;">
       </a>
     </p>
   </section>
@@ -224,7 +239,6 @@
   </footer>
 
   <script>
-    // Pour l'animation d'apparition au scroll (optionnel)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -232,8 +246,12 @@
           observer.unobserve(entry.target);
         }
       });
-    }, {threshold: 0.1});
-    document.querySelectorAll('.card, .gallery img').forEach(el => observer.observe(el));
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card, .gallery img').forEach(el => {
+      observer.observe(el);
+    });
   </script>
 </body>
 </html>
+
