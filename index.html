@@ -2,14 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ME Construction - Revêtement Extérieur</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       font-family: 'Poppins', sans-serif;
@@ -18,11 +16,10 @@
       overflow-x: hidden;
     }
     header {
-      background: url('img/back.jpg') no-repeat center 40%;
+      background: url('img/back.jpg') no-repeat center 60%;
       background-size: cover;
       text-align: center;
-      padding: 80px 20px 140px 20px; /* padding bottom plus grand */
-      animation: fadeIn 2s ease-in-out;
+      padding: 60px 20px 80px 20px;
       color: white;
       position: relative;
       z-index: 1;
@@ -32,9 +29,10 @@
       align-items: center;
     }
     header h1, header p {
-      background-color: rgba(0, 0, 0, 0.5); /* fond semi-transparent */
-      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.55);
+      padding: 12px 25px;
       border-radius: 8px;
+      max-width: 90vw;
     }
     nav {
       display: flex;
@@ -57,9 +55,13 @@
       color: #1abc9c;
     }
     .section {
-      padding: 60px 20px;
+      padding: 60px 20px 80px;
       max-width: 1200px;
       margin: auto;
+      margin-top: 20px;
+    }
+    #services {
+      margin-top: 40px; /* pour être sûr que ce ne soit pas caché */
     }
     .services, .gallery {
       display: grid;
@@ -101,7 +103,7 @@
     }
     .avis-marquee {
       display: flex;
-      animation: scrollAvis 25s linear infinite; /* vitesse plus rapide */
+      animation: scrollAvis 22s linear infinite;
       gap: 40px;
       padding: 20px;
     }
@@ -124,10 +126,6 @@
     @keyframes scrollAvis {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 600px) {
       nav {
@@ -160,9 +158,18 @@
   <section class="section" id="services">
     <h2>Nos Services</h2>
     <div class="services">
-      <div class="card"> <h3>Pose de carrelage extérieur</h3><p>Installation professionnelle de dalles sur plots, designs personnalisés pour vos terrasses et allées.</p></div>
-      <div class="card"> <h3>Terrasses en bois</h3><p>Création de terrasses élégantes et durables en bois naturel ou composite.</p></div>
-      <div class="card"> <h3>Rénovation & Entretien</h3><p>Remise à neuf de vos revêtements extérieurs et conseils pour l'entretien durable.</p></div>
+      <div class="card">
+        <h3>Pose de carrelage extérieur</h3>
+        <p>Installation professionnelle de dalles sur plots, designs personnalisés pour vos terrasses et allées.</p>
+      </div>
+      <div class="card">
+        <h3>Terrasses en bois</h3>
+        <p>Création de terrasses élégantes et durables en bois naturel ou composite.</p>
+      </div>
+      <div class="card">
+        <h3>Rénovation & Entretien</h3>
+        <p>Remise à neuf de vos revêtements extérieurs et conseils pour l'entretien durable.</p>
+      </div>
     </div>
   </section>
 
@@ -179,19 +186,19 @@
     <h2>Avis Clients</h2>
     <div class="avis-marquee">
       <div class="avis-item">
-        <img src="img/clientAlex.webp" alt="Alex">
+        <img src="img/clientAlex.webp" alt="Alex" />
         <p>Travail précis et de qualité, ponctuel, à l'écoute, prix compétitif. Je suis très très satisfait du travail réalisé. Contactez-les les yeux fermés !</p>
         <div class="stars">★★★★★</div>
         <small>- Alex</small>
       </div>
       <div class="avis-item">
-        <img src="img/clientFlorian.webp" alt="Florian Moine">
+        <img src="img/clientFlorian.webp" alt="Florian Moine" />
         <p>Projet d’une terrasse en dalles carrelage de 42m². Me Construction a été à l’écoute de notre projet, nous a conseillé sur les matériaux, et a réalisé une prestation parfaite dans un temps record ! Nous sommes ravis du résultat. Merci !</p>
         <div class="stars">★★★★★</div>
         <small>- Florian Moine</small>
       </div>
       <div class="avis-item">
-        <img src="img/clientAlexandre.webp" alt="Alexandre Oliveira">
+        <img src="img/clientAlexandre.webp" alt="Alexandre Oliveira" />
         <p>Réalisation de notre terrasse de 120m², pose de dalles sur plots. Artisan minutieux, à l'écoute et très professionnel. Nous recommandons ME Construction sans hésitation.</p>
         <div class="stars">★★★★★</div>
         <small>- Alexandre Oliveira</small>
@@ -207,7 +214,7 @@
     <p><strong>Email :</strong> <a href="mailto:contact@meconstruction.fr" style="color:#1abc9c; text-decoration:none;">contact@meconstruction.fr</a></p>
     <p style="text-align: center;">
       <a href="https://www.facebook.com/people/Me-construction/100066785978290/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook ME Construction" style="width: 60px; height: auto;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook ME Construction" style="width: 60px; height: auto;" />
       </a>
     </p>
   </section>
@@ -217,10 +224,16 @@
   </footer>
 
   <script>
+    // Pour l'animation d'apparition au scroll (optionnel)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
-     
+      });
+    }, {threshold: 0.1});
+    document.querySelectorAll('.card, .gallery img').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
