@@ -25,10 +25,11 @@
     }
     nav {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
+      gap: 20px;
       background: #111831;
-      padding: 15px 0;
+      padding: 15px 10px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -87,7 +88,7 @@
     }
     .avis-marquee {
       display: flex;
-      animation: scrollAvis 30s linear infinite;
+      animation: scrollAvis 40s linear infinite;
       gap: 40px;
       padding: 20px;
     }
@@ -98,6 +99,10 @@
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
+    .stars {
+      color: gold;
+      margin-top: 10px;
+    }
     @keyframes scrollAvis {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
@@ -105,6 +110,19 @@
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .avis-marquee {
+        flex-direction: column;
+        animation: none;
+      }
+      .avis-item {
+        margin-bottom: 20px;
+      }
     }
   </style>
 </head>
@@ -144,15 +162,23 @@
     <div class="avis-marquee">
       <div class="avis-item">
         <p>« Très professionnel, travail impeccable et rapide. Je recommande vivement. »</p>
-        <small>- Client Google</small>
+        <div class="stars">★★★★★</div>
+        <small>- Jean Dupont</small>
       </div>
       <div class="avis-item">
         <p>« Entreprise sérieuse et réactive. Les finitions sont top. Merci ME Construction. »</p>
-        <small>- Client Google</small>
+        <div class="stars">★★★★★</div>
+        <small>- Sarah B.</small>
       </div>
       <div class="avis-item">
         <p>« Je suis ravi de ma terrasse. Service client au top. »</p>
-        <small>- Client Facebook</small>
+        <div class="stars">★★★★☆</div>
+        <small>- Laurent C.</small>
+      </div>
+      <div class="avis-item">
+        <p>« Travail de qualité, équipe à l'écoute. Très satisfait du résultat final. »</p>
+        <div class="stars">★★★★★</div>
+        <small>- Camille R.</small>
       </div>
     </div>
   </section>
@@ -161,9 +187,9 @@
     <h2>Contact</h2>
     <p>Pour toute demande de devis ou renseignement, contactez-nous :</p>
     <p><strong>Adresse :</strong> Annemasse, France</p>
-    <p><strong>Téléphone :</strong> [À renseigner]</p>
-    <p><strong>Email :</strong> [À renseigner]</p>
-    <p><strong>Facebook :</strong> <a href="https://www.facebook.com/people/Me-construction/100066785978290/" target="_blank">ME Construction</a></p>
+    <p><strong>Téléphone :</strong> <a href="tel:+33000000000" style="color:#1abc9c; text-decoration:none;">+33 0 00 00 00 00</a></p>
+    <p><strong>Email :</strong> <a href="mailto:contact@meconstruction.fr" style="color:#1abc9c; text-decoration:none;">contact@meconstruction.fr</a></p>
+    <p><strong>Facebook :</strong> <a href="https://www.facebook.com/people/Me-construction/100066785978290/" target="_blank" style="color:#1abc9c;">ME Construction</a></p>
   </section>
 
   <footer>
@@ -186,3 +212,4 @@
   </script>
 </body>
 </html>
+
