@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ME Construction - Revêtement Extérieur</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a0f1c;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      text-align: center;
+      padding: 80px 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background: #111831;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #1abc9c;
+    }
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .services, .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .card, .gallery img {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    .card {
+      background: #1f2b45;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    footer {
+      background: #111831;
+      color: #aaa;
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+    }
+    #avis {
+      background: #151e35;
+      overflow: hidden;
+      position: relative;
+    }
+    .avis-marquee {
+      display: flex;
+      animation: scrollAvis 30s linear infinite;
+      gap: 40px;
+      padding: 20px;
+    }
+    .avis-item {
+      min-width: 300px;
+      background: #1f2b45;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    @keyframes scrollAvis {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ME Construction</h1>
+    <p>Transformez vos extérieurs avec un style futuriste et une finition parfaite</p>
+  </header>
+
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#realisations">Réalisations</a>
+    <a href="#avis">Avis</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="section" id="services">
+    <h2>Nos Services</h2>
+    <div class="services">
+      <div class="card"> <h3>Pose de carrelage extérieur</h3><p>Installation professionnelle de dalles sur plots, designs personnalisés pour vos terrasses et allées.</p></div>
+      <div class="card"> <h3>Terrasses en bois</h3><p>Création de terrasses élégantes et durables en bois naturel ou composite.</p></div>
+      <div class="card"> <h3>Rénovation & Entretien</h3><p>Remise à neuf de vos revêtements extérieurs et conseils pour l'entretien durable.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="realisations">
+    <h2>Réalisations</h2>
+    <div class="gallery">
+      <img src="https://scontent.fcmf1-1.fna.fbcdn.net/v/t39.30808-6/271983936_104004215468482_8454322112542712125_n.jpg" alt="Projet 1" />
+      <img src="https://scontent.fcmf1-1.fna.fbcdn.net/v/t39.30808-6/272009109_104004182135152_3180548795172032896_n.jpg" alt="Projet 2" />
+      <img src="https://scontent.fcmf1-1.fna.fbcdn.net/v/t39.30808-6/271998667_104004198801817_4533534726012342588_n.jpg" alt="Projet 3" />
+    </div>
+  </section>
+
+  <section class="section" id="avis">
+    <h2>Avis Clients</h2>
+    <div class="avis-marquee">
+      <div class="avis-item">
+        <p>« Très professionnel, travail impeccable et rapide. Je recommande vivement. »</p>
+        <small>- Client Google</small>
+      </div>
+      <div class="avis-item">
+        <p>« Entreprise sérieuse et réactive. Les finitions sont top. Merci ME Construction. »</p>
+        <small>- Client Google</small>
+      </div>
+      <div class="avis-item">
+        <p>« Je suis ravi de ma terrasse. Service client au top. »</p>
+        <small>- Client Facebook</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact</h2>
+    <p>Pour toute demande de devis ou renseignement, contactez-nous :</p>
+    <p><strong>Adresse :</strong> Annemasse, France</p>
+    <p><strong>Téléphone :</strong> [À renseigner]</p>
+    <p><strong>Email :</strong> [À renseigner]</p>
+    <p><strong>Facebook :</strong> <a href="https://www.facebook.com/people/Me-construction/100066785978290/" target="_blank">ME Construction</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ME Construction - Tous droits réservés</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card, .gallery img').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
