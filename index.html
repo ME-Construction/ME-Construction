@@ -2,12 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ME Construction - Revêtement Extérieur</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
       font-family: 'Poppins', sans-serif;
@@ -16,23 +18,31 @@
       overflow-x: hidden;
     }
     header {
-      background: url('img/back.jpg') no-repeat center 40%;
-      background-size: cover;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
       text-align: center;
-      padding: 120px 20px 70px;
+      padding: 80px 20px;
+      animation: fadeIn 2s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 40px; /* ajuste la position verticale ici */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1200px;
+      height: 200px;
+      background: url('img/back.jpg') no-repeat center center/cover;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 12px;
+    }
+    header h1, header p {
       position: relative;
       z-index: 1;
-      color: #fff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-    }
-    header p {
-      font-size: 1.25rem;
-      margin-top: 10px;
-      color: #e0e0e0;
     }
     nav {
       display: flex;
@@ -56,7 +66,7 @@
     }
     .section {
       padding: 60px 20px;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: auto;
     }
     .services, .gallery {
@@ -65,127 +75,126 @@
       gap: 30px;
       margin-top: 40px;
     }
+    .card, .gallery img {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
     .card {
       background: #1f2b45;
       padding: 25px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-    .gallery a img {
+    .gallery img {
       width: 100%;
-      max-width: 350px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      cursor: zoom-in;
       transition: transform 0.3s ease;
-      cursor: zoom-in;
-      display: block;
-      margin: auto;
     }
-    .gallery a:hover img {
+    .gallery img:hover {
       transform: scale(1.05);
-    }
-    #avis {
-      background: #151e35;
-      overflow: hidden;
-      position: relative;
-      padding: 40px 0 40px;
-    }
-    .avis-marquee {
-      display: flex;
-      animation: scrollAvis 15s linear infinite;
-      gap: 60px;
-      padding: 20px 10px;
-    }
-    .avis-item {
-      min-width: 350px;
-      background: #1f2b45;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      max-height: none;
-    }
-    .avis-item p {
-      font-size: 1rem;
-      line-height: 1.4;
-      margin-bottom: 15px;
-      white-space: normal;
-    }
-    .avis-item img {
-      width: 150px;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      cursor: zoom-in;
-      display: block;
-      object-fit: cover;
-      height: 120px;
-    }
-    .stars {
-      color: gold;
-      font-size: 1.4rem;
-      user-select: none;
-    }
-    #realisations-plus-photos {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      color: #1877f2;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 16px;
-      cursor: pointer;
-      justify-content: center;
-    }
-    #realisations-plus-photos svg {
-      fill: #1877f2;
-      width: 24px;
-      height: 24px;
     }
     footer {
       background: #111831;
       color: #aaa;
       text-align: center;
-      padding: 25px 20px;
+      padding: 25px;
       margin-top: 50px;
-      font-size: 1rem;
-      line-height: 1.5;
     }
-    footer p {
-      margin: 6px 0;
+    /* Section avis clients en colonne verticale */
+    #avis {
+      background: #151e35;
+      padding: 40px 20px;
     }
-    footer a {
+    .avis-list {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+    .avis-item {
+      background: #1f2b45;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .avis-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 12px;
+    }
+    .stars {
+      color: gold;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+    #avis::-webkit-scrollbar {
+      width: 8px;
+    }
+    #avis::-webkit-scrollbar-thumb {
+      background-color: #1abc9c;
+      border-radius: 4px;
+    }
+    /* Zoom image au clic */
+    .zoomed {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 90vw;
+      max-height: 90vh;
+      z-index: 1000;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      border-radius: 12px;
+      cursor: zoom-out;
+    }
+    /* Section réalisations */
+    #realisations .gallery img {
+      cursor: zoom-in;
+    }
+    /* Petite icône facebook sous réalisations */
+    .plus-photos {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.95em;
       color: #1abc9c;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
     }
-    footer a:hover {
-      text-decoration: underline;
+    .plus-photos img {
+      width: 24px;
+      height: 24px;
     }
-
-    @keyframes scrollAvis {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
         gap: 10px;
       }
-      .avis-marquee {
-        flex-direction: column;
-        animation: none;
-      }
-      .avis-item {
-        max-height: none;
-        margin-bottom: 20px;
-      }
-      .gallery {
+      .services, .gallery {
         grid-template-columns: 1fr;
-        gap: 20px;
+      }
+      .avis-list {
+        max-height: none;
+        overflow-y: visible;
       }
     }
   </style>
@@ -224,41 +233,25 @@
   <section class="section" id="realisations">
     <h2>Réalisations</h2>
     <div class="gallery">
-      <a href="img/bois.jpg" target="_blank" rel="noopener noreferrer"><img src="img/bois.jpg" alt="Terrasse en bois" /></a>
-      <a href="img/house.jpg" target="_blank" rel="noopener noreferrer"><img src="img/house.jpg" alt="Maison avec revêtement extérieur" /></a>
-      <a href="img/terasse.jpg" target="_blank" rel="noopener noreferrer"><img src="img/terasse.jpg" alt="Terrasse carrelée" /></a>
+      <img src="img/bois.jpg" alt="Terrasse en bois" />
+      <img src="img/house.jpg" alt="Maison" />
+      <img src="img/terasse.jpg" alt="Terrasse carrelage" />
     </div>
-    <a href="https://www.facebook.com/MEConstruction" target="_blank" rel="noopener noreferrer" id="realisations-plus-photos" aria-label="Lien vers Facebook pour plus de photos">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.99,3.66,9.12,8.44,9.88v-6.99H7.9v-2.89h2.54v-2.21 c0-2.5,1.49-3.89,3.77-3.89c1.09,0,2.23,0.2,2.23,0.2v2.46h-1.26c-1.24,0-1.63,0.77-1.63,1.56v1.88h2.78l-0.44,2.89h-2.34v6.99 C18.34,21.12,22,16.99,22,12z"/>
-      </svg>
+    <a href="https://www.facebook.com/people/Me-construction/100066785978290/" target="_blank" class="plus-photos" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook ME Construction" />
       Pour plus de photos
     </a>
   </section>
 
   <section class="section" id="avis">
     <h2>Avis Clients</h2>
-    <div class="avis-marquee" aria-label="Avis clients défilants">
+    <div class="avis-list">
       <div class="avis-item">
+        <img src="img/clientAlex.webp" alt="Alex">
         <p>Travail précis et de qualité, ponctuel, à l'écoute, prix compétitif. Je suis très très satisfait du travail réalisé. Contactez-les les yeux fermés !</p>
-        <img src="img/clientAlex.webp" alt="Photo d'Alex, client satisfait" title="Alex">
-        <div class="stars" aria-label="Note 5 étoiles">★★★★★</div>
+        <div class="stars">★★★★★</div>
+        <small>- Alex</small>
       </div>
       <div class="avis-item">
-        <p>Service impeccable, très professionnel, résultat impeccable. Je recommande vivement ME Construction.</p>
-        <div class="stars" aria-label="Note 5 étoiles">★★★★★</div>
-      </div>
-      <div class="avis-item">
-        <p>Travail sérieux, respect des délais et excellent suivi client. Je suis très content du rendu.</p>
-        <div class="stars" aria-label="Note 5 étoiles">★★★★★</div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <p>Téléphone : <a href="tel:+33676553748">06 76 55 37 48</a></p>
-    <p>Email : <a href="mailto:Me.construction@outlook.fr">Me.construction@outlook.fr</a></p>
-    <p>© 2025 ME Construction. Tous droits réservés.</p>
-  </footer>
-</body>
-</html>
+        <p>Projet d’une terrasse en dalles carrelage de 42m²
+          
