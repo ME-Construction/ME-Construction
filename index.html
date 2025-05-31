@@ -2,12 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ME Construction - Revêtement Extérieur</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
       font-family: 'Poppins', sans-serif;
@@ -21,20 +23,23 @@
       padding: 80px 20px;
       position: relative;
       overflow: hidden;
+      animation: fadeIn 2s ease-in-out;
     }
+    /* Image de fond dans header */
     header::before {
       content: "";
       position: absolute;
-      top: 60px; /* ajuste la position verticale */
+      top: 15px; /* un peu plus bas */
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
-      max-width: 1200px;
+      max-width: 600px;
       height: 200px;
-      background: url('img/back.jpg') no-repeat center/cover;
+      background: url('img/back.jpg') no-repeat center;
+      background-size: cover;
       opacity: 0.15;
-      z-index: 0;
       pointer-events: none;
+      z-index: 0;
       border-radius: 12px;
     }
     header h1, header p {
@@ -66,36 +71,35 @@
       max-width: 1200px;
       margin: auto;
     }
-    .services, .gallery {
+    .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
       margin-top: 40px;
-    }
-    .card, .gallery img {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .visible {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
     }
     .card {
       background: #1f2b45;
       padding: 25px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
     .gallery img {
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
       cursor: zoom-in;
-      transition: transform 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
     footer {
       background: #111831;
@@ -104,92 +108,98 @@
       padding: 25px;
       margin-top: 50px;
     }
-
-    /* Section avis : liste verticale centrée */
     #avis {
       background: #151e35;
-      padding: 40px 20px;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 40px;
     }
-    .avis-list {
-      max-width: 600px;
-      margin: 0 auto;
+    .avis-marquee {
       display: flex;
       flex-direction: column;
       gap: 25px;
-      max-height: 400px;
-      overflow-y: auto;
-      padding-right: 10px;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px 0;
+      /* supprimé animation pour colonne */
     }
     .avis-item {
       background: #1f2b45;
       padding: 20px;
-      border-radius: 12px;
+      border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
     }
     .avis-item img {
       width: 80px;
       height: 80px;
-      object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 12px;
-      display: block;
+      object-fit: cover;
+      flex-shrink: 0;
+      cursor: zoom-in;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
+    .avis-content {
+      flex-grow: 1;
     }
     .stars {
       color: gold;
       margin-top: 10px;
-      font-size: 1.2em;
+      font-size: 1.1rem;
     }
-    #avis::-webkit-scrollbar {
-      width: 8px;
+    .avis-item small {
+      display: block;
+      margin-top: 8px;
+      font-style: italic;
+      color: #ccc;
     }
-    #avis::-webkit-scrollbar-thumb {
-      background-color: #1abc9c;
-      border-radius: 4px;
-    }
-    /* Zoom image au clic */
-    .zoomed {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 90vw;
-      max-height: 90vh;
-      z-index: 1000;
-      box-shadow: 0 0 20px rgba(0,0,0,0.8);
-      border-radius: 12px;
-      cursor: zoom-out;
-    }
-    /* Section réalisations */
-    #realisations .gallery img {
-      cursor: zoom-in;
-    }
-    /* Petite icône facebook sous réalisations */
-    .plus-photos {
+    .plus-photo {
       text-align: center;
-      margin-top: 15px;
-      font-size: 0.95em;
+      margin-top: 25px;
       color: #1abc9c;
+      font-weight: 600;
       cursor: pointer;
-      display: inline-flex;
+      display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      text-decoration: none;
     }
-    .plus-photos img {
+    .plus-photo img {
       width: 24px;
       height: 24px;
+      filter: invert(61%) sepia(71%) saturate(401%) hue-rotate(133deg) brightness(90%) contrast(87%);
+      transition: filter 0.3s;
+    }
+    .plus-photo:hover img {
+      filter: invert(33%) sepia(88%) saturate(583%) hue-rotate(146deg) brightness(102%) contrast(105%);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
         gap: 10px;
       }
-      .services, .gallery {
+      .gallery {
         grid-template-columns: 1fr;
       }
-      .avis-list {
-        max-height: none;
-        overflow-y: visible;
+      #avis {
+        padding-bottom: 60px;
+      }
+      .avis-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .avis-item img {
+        margin-bottom: 12px;
+      }
+      .avis-content {
+        width: 100%;
       }
     }
   </style>
@@ -210,89 +220,30 @@
   <section class="section" id="services">
     <h2>Nos Services</h2>
     <div class="services">
-      <div class="card">
-        <h3>Pose de carrelage extérieur</h3>
-        <p>Installation professionnelle de dalles sur plots, designs personnalisés pour vos terrasses et allées.</p>
-      </div>
-      <div class="card">
-        <h3>Terrasses en bois</h3>
-        <p>Création de terrasses élégantes et durables en bois naturel ou composite.</p>
-      </div>
-      <div class="card">
-        <h3>Rénovation & Entretien</h3>
-        <p>Remise à neuf de vos revêtements extérieurs et conseils pour l'entretien durable.</p>
-      </div>
+      <div class="card"> <h3>Pose de carrelage extérieur</h3><p>Installation professionnelle de dalles sur plots, designs personnalisés pour vos terrasses et allées.</p></div>
+      <div class="card"> <h3>Terrasses en bois</h3><p>Création de terrasses élégantes et durables en bois naturel ou composite.</p></div>
+      <div class="card"> <h3>Rénovation & Entretien</h3><p>Remise à neuf de vos revêtements extérieurs et conseils pour l'entretien durable.</p></div>
     </div>
   </section>
 
   <section class="section" id="realisations">
     <h2>Réalisations</h2>
     <div class="gallery">
-      <img src="img/bois.jpg" alt="Terrasse en bois" />
-      <img src="img/house.jpg" alt="Maison" />
-      <img src="img/terasse.jpg" alt="Terrasse carrelage" />
+      <img src="img/bois.jpg" alt="Projet Bois" />
+      <img src="img/house.jpg" alt="Projet Maison" />
+      <img src="img/terasse.jpg" alt="Projet Terrasse" />
     </div>
-    <a href="https://www.facebook.com/people/Me-construction/100066785978290/" target="_blank" class="plus-photos" rel="noopener noreferrer">
+    <div class="plus-photo" onclick="window.open('https://www.facebook.com/people/Me-construction/100066785978290/', '_blank')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook ME Construction" />
       Pour plus de photos
-    </a>
+    </div>
   </section>
 
   <section class="section" id="avis">
     <h2>Avis Clients</h2>
-    <div class="avis-list">
+    <div class="avis-marquee">
       <div class="avis-item">
-        <img src="img/clientAlex.webp" alt="Alex" />
-        <p>Travail précis et de qualité, ponctuel, à l'écoute, prix compétitif. Je suis très très satisfait du travail réalisé. Contactez-les les yeux fermés !</p>
-        <div class="stars">★★★★★</div>
-        <small>- Alex</small>
-      </div>
-      <div class="avis-item">
-        <p>Projet d’une terrasse en dalles carrelage de 42m² avec ME Construction, résultat au top, équipe professionnelle et sérieuse.</p>
-        <div class="stars">★★★★★</div>
-        <small>- Client 2</small>
-      </div>
-      <div class="avis-item">
-        <p>Travail propre, respect des délais, je recommande fortement ME Construction pour vos projets extérieurs.</p>
-        <div class="stars">★★★★☆</div>
-        <small>- Client 3</small>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <h2>Contactez-nous</h2>
-    <p>Téléphone : <a href="tel:+33676553748" style="color:#1abc9c;">06 76 55 37 48</a></p>
-    <p>Email : <a href="mailto:Me.construction@outlook.fr" style="color:#1abc9c;">Me.construction@outlook.fr</a></p>
-  </section>
-
-  <footer>
-    &copy; 2025 ME Construction - Tous droits réservés
-  </footer>
-
-  <script>
-    // Animation apparition au scroll
-    function onScroll() {
-      document.querySelectorAll('.card, .gallery img').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 100) {
-          el.classList.add('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('load', onScroll);
-
-    // Zoom image au clic
-    document.querySelectorAll('.gallery img, #avis img').forEach(img => {
-      img.addEventListener('click', () => {
-        const zoomed = document.createElement('img');
-        zoomed.src = img.src;
-        zoomed.className = 'zoomed';
-        zoomed.onclick = () => zoomed.remove();
-        document.body.appendChild(zoomed);
-      });
-    });
-  </script>
-</body>
-</html>
+        <img src="img/clientAlex.webp" alt="Alex">
+        <div class="avis-content">
+          <p>Travail précis et de qualité, ponctuel, à l'écoute du client, aimable,
+            
