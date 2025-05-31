@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ME Construction</title>
 <style>
-  /* RESET BASIQUE */
   * {
     margin: 0; padding: 0; box-sizing: border-box;
   }
@@ -15,30 +14,36 @@
     color: #222;
     line-height: 1.5;
   }
-  /* HEADER avec image derrière ME CONSTRUCTION */
   header {
     position: relative;
     text-align: center;
-    color: white;
     padding: 80px 20px 50px;
     background: url('img/back.jpg') no-repeat center;
     background-size: cover;
-    filter: none; /* image nette */
-  }
-  header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.35); /* overlay sombre pour lisibilité */
-    z-index: 0;
+    filter: brightness(0.85);
   }
   header h1 {
-    position: relative;
+    color: white;
     font-size: 3rem;
-    z-index: 1;
+    position: relative;
+    z-index: 2;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.8);
   }
-
-  /* SECTION NOS SERVICES */
+  header::after {
+    content: "ME CONSTRUCTION";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    color: white;
+    opacity: 0.1;
+    font-weight: 900;
+    white-space: nowrap;
+    z-index: 1;
+    user-select: none;
+    filter: blur(3px);
+  }
   section#services {
     padding: 40px 20px;
     text-align: center;
@@ -48,13 +53,11 @@
     margin-bottom: 20px;
   }
   section#services p {
-    max-width: 600px;
+    max-width: 700px;
     margin: auto;
     font-size: 1.1rem;
     color: #333;
   }
-
-  /* SECTION REALISATIONS */
   section#realisations {
     padding: 40px 20px;
     max-width: 900px;
@@ -82,15 +85,13 @@
   .photos img:hover {
     transform: scale(1.05);
   }
-
-  /* Icône Facebook et lien "Pour plus de photos" */
   .plus-photos {
     text-align: center;
     margin-top: 15px;
     font-size: 1rem;
   }
   .plus-photos a {
-    color: #4267B2; /* bleu Facebook */
+    color: #4267B2;
     text-decoration: none;
     font-weight: bold;
     display: inline-flex;
@@ -105,8 +106,6 @@
     height: 18px;
     fill: #4267B2;
   }
-
-  /* SECTION AVIS CLIENTS */
   section#avis {
     background: #f7f7f7;
     padding: 40px 20px;
@@ -156,8 +155,6 @@
     font-style: italic;
     color: #666;
   }
-
-  /* FOOTER CONTACT */
   footer {
     background: #222;
     color: #eee;
@@ -195,7 +192,6 @@
   </div>
   <div class="plus-photos">
     <a href="https://www.facebook.com/MEConstruction" target="_blank" rel="noopener noreferrer">
-      <!-- Icône Facebook simple SVG -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.6 0 0 .6 0 1.326v21.348C0 23.4.6 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.466.099 2.798.143v3.243l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116C23.4 24 24 23.4 24 22.674V1.326C24 .6 23.4 0 22.675 0z"/></svg>
       Pour plus de photos
     </a>
@@ -237,39 +233,5 @@
 </footer>
 
 <script>
-  // Zoom image au clic simple
-  document.querySelectorAll('.photos img, .avis img').forEach(img => {
-    img.addEventListener('click', () => {
-      const src = img.src;
-      const overlay = document.createElement('div');
-      overlay.style.position = 'fixed';
-      overlay.style.top = 0;
-      overlay.style.left = 0;
-      overlay.style.width = '100vw';
-      overlay.style.height = '100vh';
-      overlay.style.backgroundColor = 'rgba(0,0,0,0.8)';
-      overlay.style.display = 'flex';
-      overlay.style.alignItems = 'center';
-      overlay.style.justifyContent = 'center';
-      overlay.style.cursor = 'zoom-out';
-      overlay.style.zIndex = 10000;
-
-      const zoomImg = document.createElement('img');
-      zoomImg.src = src;
-      zoomImg.style.maxWidth = '90%';
-      zoomImg.style.maxHeight = '90%';
-      zoomImg.style.borderRadius = '10px';
-      zoomImg.style.boxShadow = '0 0 15px white';
-
-      overlay.appendChild(zoomImg);
-      document.body.appendChild(overlay);
-
-      overlay.addEventListener('click', () => {
-        document.body.removeChild(overlay);
-      });
-    });
-  });
-</script>
-
-</body>
-</html>
+  // Zoom image au clic
+ 
