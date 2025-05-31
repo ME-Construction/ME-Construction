@@ -2,14 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ME Construction - Revêtement Extérieur</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       font-family: 'Poppins', sans-serif;
@@ -21,20 +19,19 @@
       background: linear-gradient(135deg, #1e3c72, #2a5298);
       text-align: center;
       padding: 80px 20px;
-      animation: fadeIn 2s ease-in-out;
       position: relative;
       overflow: hidden;
     }
     header::before {
       content: "";
       position: absolute;
-      top: 40px; /* ajuste la position verticale ici */
+      top: 60px; /* ajuste la position verticale */
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
       max-width: 1200px;
       height: 200px;
-      background: url('img/back.jpg') no-repeat center center/cover;
+      background: url('img/back.jpg') no-repeat center/cover;
       opacity: 0.15;
       z-index: 0;
       pointer-events: none;
@@ -107,7 +104,8 @@
       padding: 25px;
       margin-top: 50px;
     }
-    /* Section avis clients en colonne verticale */
+
+    /* Section avis : liste verticale centrée */
     #avis {
       background: #151e35;
       padding: 40px 20px;
@@ -134,6 +132,7 @@
       object-fit: cover;
       border-radius: 50%;
       margin-bottom: 12px;
+      display: block;
     }
     .stars {
       color: gold;
@@ -179,10 +178,6 @@
     .plus-photos img {
       width: 24px;
       height: 24px;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 600px) {
       nav {
@@ -247,11 +242,57 @@
     <h2>Avis Clients</h2>
     <div class="avis-list">
       <div class="avis-item">
-        <img src="img/clientAlex.webp" alt="Alex">
+        <img src="img/clientAlex.webp" alt="Alex" />
         <p>Travail précis et de qualité, ponctuel, à l'écoute, prix compétitif. Je suis très très satisfait du travail réalisé. Contactez-les les yeux fermés !</p>
         <div class="stars">★★★★★</div>
         <small>- Alex</small>
       </div>
       <div class="avis-item">
-        <p>Projet d’une terrasse en dalles carrelage de 42m²
-          
+        <p>Projet d’une terrasse en dalles carrelage de 42m² avec ME Construction, résultat au top, équipe professionnelle et sérieuse.</p>
+        <div class="stars">★★★★★</div>
+        <small>- Client 2</small>
+      </div>
+      <div class="avis-item">
+        <p>Travail propre, respect des délais, je recommande fortement ME Construction pour vos projets extérieurs.</p>
+        <div class="stars">★★★★☆</div>
+        <small>- Client 3</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contactez-nous</h2>
+    <p>Téléphone : <a href="tel:+33676553748" style="color:#1abc9c;">06 76 55 37 48</a></p>
+    <p>Email : <a href="mailto:Me.construction@outlook.fr" style="color:#1abc9c;">Me.construction@outlook.fr</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 ME Construction - Tous droits réservés
+  </footer>
+
+  <script>
+    // Animation apparition au scroll
+    function onScroll() {
+      document.querySelectorAll('.card, .gallery img').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
+
+    // Zoom image au clic
+    document.querySelectorAll('.gallery img, #avis img').forEach(img => {
+      img.addEventListener('click', () => {
+        const zoomed = document.createElement('img');
+        zoomed.src = img.src;
+        zoomed.className = 'zoomed';
+        zoomed.onclick = () => zoomed.remove();
+        document.body.appendChild(zoomed);
+      });
+    });
+  </script>
+</body>
+</html>
