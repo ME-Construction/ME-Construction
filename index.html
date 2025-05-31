@@ -22,11 +22,10 @@
     background: linear-gradient(135deg, #1e3c72, #2a5298);
     overflow: hidden;
   }
-  /* Image de fond dans header */
   header::before {
     content: "";
     position: absolute;
-    top: 60px; /* un peu plus vers le bas */
+    top: 60px; 
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -168,6 +167,10 @@
     margin-top: 50px;
     font-size: 0.95rem;
   }
+  footer a {
+    color: #1abc9c;
+    text-decoration: none;
+  }
   /* Zoom modal */
   #zoomModal {
     display: none;
@@ -258,27 +261,19 @@
   <div class="avis-marquee">
 
     <div class="avis-item">
-      <img src="img/clientAlex.webp" alt="Alex" class="zoomable" />
+      <img src="img/clientAlex.webp" alt="Alexandre Oliveira" class="zoomable" />
       <div class="avis-content">
-        <p>Travail précis et de qualité, ponctuel, à l'écoute du client, aimable, très professionnel.</p>
+        <p>Réalisation de notre terrasse de 120m2 pose de dalles 30x120 sur plots. Artisan très minutieux et très soucieux de la satisfaction client. Nous sommes très satisfaits du rendu de la terrasse. Nous recommandons cet artisan pour la pose de terrasse.</p>
         <div class="stars">★★★★★</div>
-        <small>Alex</small>
+        <small>Alexandre Oliveira</small>
       </div>
     </div>
 
     <div class="avis-item">
       <div class="avis-content">
-        <p>Une équipe sérieuse, travail soigné et respect des délais. Très satisfait du résultat !</p>
+        <p>Projet d’une terrasse en dalles carrelage de 42m². Me Construction a été à l’écoute de notre projet ! Et nous a conseillé sur le type de dalles à acheter avec une super promotion en magasin ! Livrée une semaine plus tard… Me Construction a parfaitement réalisé cette terrasse dans un temps record ! Il nous aurait fallu sûrement le double d’heures de travail pour réaliser cette prestation… Et sûrement pas au niveau de rendu de ME CONSTRUCTION ! Nous sommes vraiment ravis de cet ouvrage :) Prêt pour profiter des premiers rayons de soleil. MERCI ME CONSTRUCTION !!!! ALLEZ Y LES YEUX FERMÉS…</p>
         <div class="stars">★★★★★</div>
-        <small>Marie D.</small>
-      </div>
-    </div>
-
-    <div class="avis-item">
-      <div class="avis-content">
-        <p>Excellent rapport qualité-prix. Je recommande ME Construction pour vos travaux extérieurs.</p>
-        <div class="stars">★★★★★</div>
-        <small>Julien P.</small>
+        <small>Florian Moine</small>
       </div>
     </div>
 
@@ -286,8 +281,8 @@
 </section>
 
 <footer id="contact">
-  <p>Téléphone : <a href="tel:+33676553748" style="color:#1abc9c;">06 76 55 37 48</a></p>
-  <p>Email : <a href="mailto:Me.construction@outlook.fr" style="color:#1abc9c;">Me.construction@outlook.fr</a></p>
+  <p>Téléphone : <a href="tel:+33676553748">06 76 55 37 48</a></p>
+  <p>Email : <a href="mailto:Me.construction@outlook.fr">Me.construction@outlook.fr</a></p>
 </footer>
 
 <!-- Modal zoom image -->
@@ -300,21 +295,5 @@
   const zoomModal = document.getElementById('zoomModal');
   const zoomedImg = zoomModal.querySelector('img');
 
-  document.querySelectorAll('.zoomable, .gallery img').forEach(img => {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', () => {
-      zoomedImg.src = img.src;
-      zoomModal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  zoomModal.addEventListener('click', () => {
-    zoomModal.style.display = 'none';
-    zoomedImg.src = '';
-    document.body.style.overflow = '';
-  });
-</script>
-
-</body>
-</html>
+  document.querySelectorAll('.
+  
